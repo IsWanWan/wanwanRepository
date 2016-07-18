@@ -15,7 +15,7 @@ public class AdminServiceImpl  implements AdminService{
 
 
     public Admin getAdmin(int id) throws Exception {
-        Admin  admin =   adminMapper.find(1);
+        Admin  admin = adminMapper.find(id);
 
 
         return admin;

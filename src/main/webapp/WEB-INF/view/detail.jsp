@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-
+KLK;K;K
 <table>
    <%--${person.username}, ${person.age}--%>
     <%--<c:forEach items="${list}" var="person">--%>
@@ -26,7 +26,8 @@
 
     <%--</c:forEach>--%>
 
-    ${admin.name}
+    <%--${admin.name}--%>
+    ${frutis.fName}
 </table>
 </body>
 </html>

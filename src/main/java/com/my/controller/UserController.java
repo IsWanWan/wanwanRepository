@@ -1,5 +1,8 @@
 package com.my.controller;
 
+import com.my.mapper.FrutisMapper;
+import com.my.pojo.Frutis;
+import com.my.service.FrutisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,8 @@ import com.my.service.AdminService;
 public class UserController {
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private FrutisService frutisService;
 
 @RequestMapping("/get")
     public ModelAndView GetUser(){
@@ -35,11 +40,22 @@ public class UserController {
 
         ModelAndView mv = new ModelAndView();
 
-    Admin admin =adminService.getAdmin(1);
+         Admin admin =adminService.getAdmin(1);
 
         mv.addObject("admin",admin);
         mv.setViewName("/detail");
         return mv;
     }
 
+    @RequestMapping("/getOne")
+    public ModelAndView getOne() throws Exception {
+
+        ModelAndView mv = new ModelAndView();
+
+        Frutis frutis =frutisService.selectByPrimaryKey("02");
+
+        mv.addObject("frutis",frutis);
+        mv.setViewName("/detail");
+        return mv;
+    }
 }

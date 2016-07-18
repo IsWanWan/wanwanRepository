@@ -9,5 +9,5 @@ import com.my.pojo.Admin;
 @Repository
 public interface AdminMapper {
 
-    public Admin find(int id) throws Exception;
+     Admin find(int id) throws Exception;
 }
