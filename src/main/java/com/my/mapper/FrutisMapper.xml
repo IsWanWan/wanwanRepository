@@ -10,12 +10,16 @@
   <sql id="Base_Column_List" >
     f_id, s_id, f_name, f_price
   </sql>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from frutis
     where f_id = #{fId,jdbcType=CHAR}
   </select>
+
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from frutis
     where f_id = #{fId,jdbcType=CHAR}

@@ -1,22 +1,20 @@
 package com.my.shiro;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.my.pojo.ActiveUser;
 import com.my.pojo.Admin;
+import com.my.pojo.User;
 import com.my.service.AdminService;
+import com.my.service.UserService;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -39,8 +37,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class CustomRealm extends AuthorizingRealm {
 	
 	//注入service
-	@Autowired
-	private AdminService adminService;
+@Autowired
+private UserService userService;
 
 	// 设置realm的名称
 	@Override
@@ -50,11 +48,11 @@ public class CustomRealm extends AuthorizingRealm {
 
 	// 用于认证
 	//没有连接数据库的方法
-	/*@Override
+		/*@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken token) throws AuthenticationException {
-		
-		// token是用户输入的用户名和密码 
+
+	// token是用户输入的用户名和密码
 		// 第一步从token中取出用户名
 		String userCode = (String) token.getPrincipal();
 
@@ -105,59 +103,76 @@ public class CustomRealm extends AuthorizingRealm {
 	//realm的认证方法，从数据库查询用户信息
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(
-			AuthenticationToken token) throws AuthenticationException {
-
-		// token是用户输入的用户名和密码
-		// 第一步从token中取出用户名
-		String userCode = (String) token.getPrincipal();
-
-		// 第二步：根据用户输入的userCode从数据库查询
-		Admin admin = null;
-		try {
-			admin = adminService.getByUsername(userCode);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		// 如果查询不到返回null
-		if(admin==null){//
-			return null;
-		}
-		// 从数据库查询到密码
-		String password = admin.getPassword();
-
-		//盐
-		String salt = admin.getSalt();
-
-		// 如果查询到返回认证信息AuthenticationInfo
-
-		//activeUser就是用户身份信息
-		ActiveUser activeUser = new ActiveUser();
-
-		activeUser.setUserid(admin.getId());
-		//activeUser.setUsercode(a.getUsercode());
-		activeUser.setUsername(admin.getUsername());
-		//..
-
-//		//根据用户id取出菜单
-//		List<SysPermission> menus  = null;
-//		try {
-//			//通过service取出菜单
-//			menus = sysService.findMenuListByUserId(sysUser.getId());
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			AuthenticationToken authcToken) throws AuthenticationException {
+//
+//		// token是用户输入的用户名和密码
+//		// 第一步从token中取出用户名
+//		String userCode = (String) token.getPrincipal();
+//
+//		// 第二步：根据用户输入的userCode从数据库查询
+//		 Admin admin = null;
+//	    if(userCode.equals("zhaoxiuling")){
+//			//admin = adminService.getByUsername(userCode);
+//			admin.setUsername("zhaoxiuling");
+//			admin.setPassword("123456");
+//
+//			admin.setId(1);
 //		}
-//		//将用户菜单 设置到activeUser
-//		activeUser.setMenus(menus);
+//
+//		// 如果查询不到返回nul
+//		if(admin == null){
+//			return null;
+//		}
+//		// 从数据库查询到密码
+//		String password = admin.getPassword();
+//
+//		//盐
+//
+//
+//		// 如果查询到返回认证信息AuthenticationInfo
+//
+//		//activeUser就是用户身份信息
+//		ActiveUser activeUser = new ActiveUser();
+//
+//		activeUser.setUserid(admin.getId());
+//		//activeUser.setUsercode(a.getUsercode());
+//		activeUser.setUsername(admin.getUsername());
+//		//..
+//
+////		//根据用户id取出菜单
+////		List<SysPermission> menus  = null;
+////		try {
+////			//通过service取出菜单
+////			menus = sysService.findMenuListByUserId(sysUser.getId());
+////		} catch (Exception e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		}
+////		//将用户菜单 设置到activeUser
+////		activeUser.setMenus(menus);
+//
+//		//将activeUser设置simpleAuthenticationInfo
+//		SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(
+//				activeUser, password, this.getName());
+//
+//		return simpleAuthenticationInfo;
 
-		//将activeUser设置simpleAuthenticationInfo
-		SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(
-				activeUser, password,ByteSource.Util.bytes(salt), this.getName());
 
-		return simpleAuthenticationInfo;
+		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
+		// 通过表单接收的用户名
+		String username = token.getUsername();
+
+		if( username != null && !"".equals(username) ){
+			User user = userService.selectByUsername(username);
+			if( user != null ){
+				return new SimpleAuthenticationInfo(
+						user.getUsername(),user.getPassword(),getName() );
+			}
+		}
+
+		return null;
 	}
+
 	
 
 

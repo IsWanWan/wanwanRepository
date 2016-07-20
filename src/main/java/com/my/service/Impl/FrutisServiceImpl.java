@@ -10,7 +10,7 @@ import org.springframework.test.context.transaction.AfterTransaction;
 /**
  * Created by wanwan on 16/7/18.
  */
-
+@Service
 public class FrutisServiceImpl  implements FrutisService{
     @Autowired
     private FrutisMapper frutisMapper;

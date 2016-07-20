@@ -15,4 +15,5 @@
     <!-- 商品管理 的service -->
     <bean id="adminService" class="com.my.service.Impl.AdminServiceImpl"/>
     <bean id="frutisService" class="com.my.service.Impl.FrutisServiceImpl"/>
+    <bean id="userService" class="com.my.service.Impl.UserServiceImpl"/>
 </beans>

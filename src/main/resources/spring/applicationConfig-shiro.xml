@@ -38,9 +38,10 @@
                 /styles/** = anon
                 <!-- 验证码，可匿名访问 -->
                 /validatecode.jsp = anon
+                /user/find =anon
 
                 <!-- 请求 logout.action地址，shiro去清除session-->
-                /logout.action = logout
+                /logout = logout
                 <!--商品查询需要商品查询权限 ，取消url拦截配置，使用注解授权方式 -->
                 <!-- /items/queryItems.action = perms[item:query]
                 /items/editItems.action = perms[item:edit] -->
@@ -49,7 +50,7 @@
                 /first.action = user
                 /welcome.jsp = user
                 <!-- /** = authc 所有url都必须认证通过才可以访问-->
-                /** = authc
+                <!--/** = authc-->
                 <!-- /** = anon所有url都可以匿名访问 -->
 
             </value>
@@ -79,8 +80,8 @@
     <!-- 凭证匹配器 -->
     <bean id="credentialsMatcher"
           class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
-        <property name="hashAlgorithmName" value="md5" />
-        <property name="hashIterations" value="1" />
+        <!--<property name="hashAlgorithmName" value="md5" />-->
+        <!--<property name="hashIterations" value="1" />-->
     </bean>
 
     <!--&lt;!&ndash; 缓存管理器 &ndash;&gt;-->

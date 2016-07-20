@@ -25,9 +25,14 @@ KLK;K;K
 
 
     <%--</c:forEach>--%>
+       </table>
+<br>
 
-    <%--${admin.name}--%>
+    ${user.username}
+    ${user.password}
     ${frutis.fName}
+    ${admin.username}
+
 </table>
 </body>
 </html>

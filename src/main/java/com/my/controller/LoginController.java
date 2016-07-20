@@ -76,8 +76,8 @@ public class LoginController {
 				throw new CustomException("用户名/密码错误");
 			} else if("randomCodeError".equals(exceptionClassName)){
 				throw new CustomException("验证码错误 ");
-			}else {
-				throw new Exception();//最终在异常处理器生成未知错误
+			}else if("AuthenticationException".equals(exceptionClassName)){
+				throw new CustomException("其他异常");//最终在异常处理器生成未知错误
 			}
 		}
 		//此方法不处理登陆成功（认证成功），shiro认证成功会自动跳转到上一个请求路径

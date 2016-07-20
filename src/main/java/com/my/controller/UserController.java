@@ -2,7 +2,9 @@ package com.my.controller;
 
 import com.my.pojo.Admin;
 import com.my.pojo.Frutis;
+import com.my.pojo.User;
 import com.my.service.FrutisService;
+import com.my.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +22,10 @@ public class UserController {
     private AdminService adminService;
     @Autowired
     private FrutisService frutisService;
+    @Autowired
+    private UserService userService;
 
-@RequestMapping("/get")
+      @RequestMapping("/get")
     public ModelAndView GetUser(){
 
         ModelAndView mv = new ModelAndView();
@@ -34,14 +38,15 @@ public class UserController {
 
     }
 
-    @RequestMapping("/find")
-    public ModelAndView find() throws Exception {
 
+
+
+    @RequestMapping("/test")
+    public ModelAndView test(){
         ModelAndView mv = new ModelAndView();
+        User user = userService.selectByUsername("haha");
 
-         Admin admin =adminService.getByUsername("zhaoxiuling");
-
-        mv.addObject("admin",admin);
+        mv.addObject("user",user);
         mv.setViewName("/detail");
         return mv;
     }
@@ -51,10 +56,23 @@ public class UserController {
 
         ModelAndView mv = new ModelAndView();
 
-        Frutis frutis =frutisService.selectByPrimaryKey("02");
+        Frutis frutis =frutisService.selectByPrimaryKey("a2");
 
         mv.addObject("frutis",frutis);
         mv.setViewName("/detail");
         return mv;
     }
+
+    @RequestMapping("/find")
+    public ModelAndView find() throws Exception {
+
+        ModelAndView mv = new ModelAndView();
+
+        Admin admin =adminService.getByUsername("zhaoxiuling");
+
+        mv.addObject("admin",admin);
+        mv.setViewName("/detail");
+        return mv;
+    }
+
 }
