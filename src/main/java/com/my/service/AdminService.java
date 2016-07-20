@@ -7,8 +7,8 @@ import com.my.pojo.Admin;
  */
 public interface AdminService {
 
-  public Admin getAdmin(int id) throws Exception;
+  public Admin selectByPrimaryKey(int id) throws Exception;
 
-
+   public Admin getByUsername(String username) throws Exception;
 
 }

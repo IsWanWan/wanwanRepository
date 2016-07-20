@@ -11,13 +11,13 @@
     <title>Title</title>
 </head>
 <body>
-  <form method="post" action="/LoginServlet" >
+  <form method="post" action="/login/login" >
 
       <table>
           <tr>
 
             <td> 姓名:</td>
-              <td><input type="text"  name="name"></td>
+              <td><input type="text"  name="username"></td>
 
           </tr>
           <tr>

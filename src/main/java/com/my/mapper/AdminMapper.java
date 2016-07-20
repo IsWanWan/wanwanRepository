@@ -1,13 +1,22 @@
 package com.my.mapper;
 
-import org.springframework.stereotype.Repository;
 import com.my.pojo.Admin;
+import org.springframework.stereotype.Repository;
 
-/**
- * Created by wanwan on 16/7/17.
- */
+
 @Repository
 public interface AdminMapper {
+    int deleteByPrimaryKey(Integer id);
 
-     Admin find(int id) throws Exception;
+    int insert(Admin record);
+
+    int insertSelective(Admin record);
+
+    Admin selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Admin record);
+
+    int updateByPrimaryKey(Admin record);
+
+    Admin selectByUsername(String username);
 }
