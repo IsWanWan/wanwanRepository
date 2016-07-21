@@ -28,7 +28,7 @@
                              targetPackage="com.my.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-        <table schema="" tableName="t_sysconfigt_sysmenu" domainObjectName="SysconfigtSysmenu"
+        <table schema="" tableName="t_sysrole" domainObjectName="Sysrole"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
