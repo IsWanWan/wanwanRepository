@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.my.mapper.OperatorRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.my.pojo.OperatorRole" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="OPERATOR_ID" property="operatorId" jdbcType="BIGINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.my.pojo.OperatorRole" extends="BaseResultMap" >
+    <result column="ROLE_IDS" property="roleIds" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, OPERATOR_ID
+  </sql>
+  <sql id="Blob_Column_List" >
+    ROLE_IDS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_operator_role
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_operator_role
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.my.pojo.OperatorRole" >
+    insert into t_operator_role (ID, OPERATOR_ID, ROLE_IDS
+      )
+    values (#{id,jdbcType=BIGINT}, #{operatorId,jdbcType=BIGINT}, #{roleIds,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.my.pojo.OperatorRole" >
+    insert into t_operator_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="operatorId != null" >
+        OPERATOR_ID,
+      </if>
+      <if test="roleIds != null" >
+        ROLE_IDS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="roleIds != null" >
+        #{roleIds,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.my.pojo.OperatorRole" >
+    update t_operator_role
+    <set >
+      <if test="operatorId != null" >
+        OPERATOR_ID = #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="roleIds != null" >
+        ROLE_IDS = #{roleIds,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.my.pojo.OperatorRole" >
+    update t_operator_role
+    set OPERATOR_ID = #{operatorId,jdbcType=BIGINT},
+      ROLE_IDS = #{roleIds,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.my.pojo.OperatorRole" >
+    update t_operator_role
+    set OPERATOR_ID = #{operatorId,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
