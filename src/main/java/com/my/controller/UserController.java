@@ -70,7 +70,7 @@ public class UserController {
 
         Admin admin =adminService.getByUsername("zhaoxiuling");
 
-        mv.addObject("admin",admin);
+   //     mv.addObject("admin",admin);
         mv.setViewName("/detail");
         return mv;
     }

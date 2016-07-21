@@ -2,8 +2,10 @@ package com.my.shiro;
 
 import com.my.pojo.ActiveUser;
 import com.my.pojo.Admin;
+import com.my.pojo.Operator;
 import com.my.pojo.User;
 import com.my.service.AdminService;
+import com.my.service.OperatorService;
 import com.my.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -38,7 +40,7 @@ public class CustomRealm extends AuthorizingRealm {
 	
 	//注入service
 @Autowired
-private UserService userService;
+private OperatorService operatorService;
 
 	// 设置realm的名称
 	@Override
@@ -163,10 +165,10 @@ private UserService userService;
 		String username = token.getUsername();
 
 		if( username != null && !"".equals(username) ){
-			User user = userService.selectByUsername(username);
-			if( user != null ){
+			Operator operator = operatorService.selectByUsername(username);
+			if( operator != null ){
 				return new SimpleAuthenticationInfo(
-						user.getUsername(),user.getPassword(),getName() );
+						operator.getLoginName(),operator.getPassword(),getName() );
 			}
 		}
 

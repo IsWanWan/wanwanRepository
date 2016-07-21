@@ -1,8 +1,12 @@
-package com.my.mapper;
+package com.my.service;
 
 import com.my.pojo.Operator;
 
-public interface OperatorMapper {
+/**
+ * Created by wanwan on 16/7/21.
+ */
+public interface OperatorService {
+
     int deleteByPrimaryKey(Long id);
 
     int insert(Operator record);

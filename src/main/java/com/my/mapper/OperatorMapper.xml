@@ -27,12 +27,23 @@
     ERROR_TIMES, UPDATE_TIME, LOGIN_IP, LOGIN_TIME, CREATE_TIME, IS_PLATOPERATOR, STATUS, 
     CP_CODE
   </sql>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from t_operator
     where ID = #{id,jdbcType=BIGINT}
   </select>
+
+
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from t_operator
+    where LOGIN_NAME = #{username,jdbcType=VARCHAR}
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_operator
     where ID = #{id,jdbcType=BIGINT}

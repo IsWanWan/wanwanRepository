@@ -28,7 +28,7 @@
     select
     <include refid="Base_Column_List" />
     from admin
-    where username = #{username,jdbcType=String}
+    where username = #{username,jdbcType=VARCHAR}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

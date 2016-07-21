@@ -16,4 +16,5 @@
     <bean id="adminService" class="com.my.service.Impl.AdminServiceImpl"/>
     <bean id="frutisService" class="com.my.service.Impl.FrutisServiceImpl"/>
     <bean id="userService" class="com.my.service.Impl.UserServiceImpl"/>
+    <bean id="operatorService" class="com.my.service.Impl.OperatorServiceImpl"/>
 </beans>
