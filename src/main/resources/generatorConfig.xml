@@ -28,7 +28,7 @@
                              targetPackage="com.my.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-        <table schema="" tableName="t_sysrole" domainObjectName="Sysrole"
+        <table schema="" tableName="t_sysrole_priv" domainObjectName="SysrolePriv"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
