@@ -1,6 +1,6 @@
 package com.my.service.Impl;
 
-import com.my.mapper.OperatorMapper;
+import com.my.dao.OperatorMapper;
 import com.my.pojo.Operator;
 import com.my.service.OperatorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
  * Created by wanwan on 16/7/21.
  */
-@Service
+@Service("operatorService")
 public class OperatorServiceImpl implements OperatorService {
 
     @Autowired

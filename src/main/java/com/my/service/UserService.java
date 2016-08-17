@@ -1,10 +1,12 @@
 package com.my.service;
 
 import com.my.pojo.User;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by wanwan on 16/7/20.
  */
+@Service
 public interface UserService {
 
     int deleteByPrimaryKey(Integer id);

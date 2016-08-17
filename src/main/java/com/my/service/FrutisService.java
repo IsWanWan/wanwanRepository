@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 /**
  * Created by wanwan on 16/7/18.
  */
-
+@Service
 public interface FrutisService {
     int deleteByPrimaryKey(String fId);
 

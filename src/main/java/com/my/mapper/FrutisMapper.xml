@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.my.mapper.FrutisMapper" >
+<mapper namespace="com.my.dao.FrutisMapper" >
   <resultMap id="BaseResultMap" type="com.my.pojo.Frutis" >
     <id column="f_id" property="fId" jdbcType="CHAR" />
     <result column="s_id" property="sId" jdbcType="INTEGER" />

@@ -1,6 +1,6 @@
 package com.my.service.Impl;
 
-import com.my.mapper.AdminMapper;
+import com.my.dao.AdminMapper;
 import com.my.pojo.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.my.service.AdminService;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
  * Created by wanwan on 16/7/17.
  */
-@Service
+@Service("adminService")
 public class AdminServiceImpl  implements AdminService{
 
     @Autowired

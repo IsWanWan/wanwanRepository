@@ -1,6 +1,6 @@
 package com.my.service.Impl;
 
-import com.my.mapper.UserMapper;
+import com.my.dao.UserMapper;
 import com.my.pojo.User;
 import com.my.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
  * Created by wanwan on 16/7/20.
  */
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService{
 
     @Autowired

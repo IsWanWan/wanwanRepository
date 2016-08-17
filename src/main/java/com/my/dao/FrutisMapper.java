@@ -1,4 +1,4 @@
-package com.my.mapper;
+package com.my.dao;
 
 import com.my.pojo.Frutis;
 import org.springframework.stereotype.Repository;

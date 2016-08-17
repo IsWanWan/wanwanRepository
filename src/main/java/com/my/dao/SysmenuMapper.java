@@ -1,6 +1,8 @@
-package com.my.mapper;
+package com.my.dao;
 
 import com.my.pojo.Sysmenu;
+
+import java.util.List;
 
 public interface SysmenuMapper {
     int deleteByPrimaryKey(Long id);
@@ -14,4 +16,8 @@ public interface SysmenuMapper {
     int updateByPrimaryKeySelective(Sysmenu record);
 
     int updateByPrimaryKey(Sysmenu record);
+
+
+    List<Sysmenu> sysmenuList(int opertorId);
+
 }

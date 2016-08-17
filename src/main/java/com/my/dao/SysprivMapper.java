@@ -1,4 +1,4 @@
-package com.my.mapper;
+package com.my.dao;
 
 import com.my.pojo.Syspriv;
 

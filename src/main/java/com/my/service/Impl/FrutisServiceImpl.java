@@ -1,16 +1,15 @@
 package com.my.service.Impl;
 
-import com.my.mapper.FrutisMapper;
+import com.my.dao.FrutisMapper;
 import com.my.pojo.Frutis;
 import com.my.service.FrutisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.test.context.transaction.AfterTransaction;
 
 /**
  * Created by wanwan on 16/7/18.
  */
-@Service
+@Service("frutisService")
 public class FrutisServiceImpl  implements FrutisService{
     @Autowired
     private FrutisMapper frutisMapper;

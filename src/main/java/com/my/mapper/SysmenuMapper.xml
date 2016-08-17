@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.my.mapper.SysmenuMapper" >
+<mapper namespace="com.my.dao.SysmenuMapper" >
   <resultMap id="BaseResultMap" type="com.my.pojo.Sysmenu" >
     <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="CODE" property="code" jdbcType="VARCHAR" />
@@ -16,12 +16,26 @@
   <sql id="Base_Column_List" >
     ID, CODE, NAME, NAVIGATE_URL, ICON, PARENT_ID, LEVEL, SEQUENCE, CREATE_TIME, STATUS
   </sql>
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from t_sysmenu
     where ID = #{id,jdbcType=BIGINT}
   </select>
+
+
+  <select id="sysmenuList" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    SELECT
+    s.*
+  FROM test.t_sysrole_menu sm ,t_sysmenu s,t_operator_role r
+  where sm.ROLE_ID = r.ROLE_IDS
+  AND r.OPERATOR_ID = #{opertorId,jdbcType=BIGINT}
+
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_sysmenu
     where ID = #{id,jdbcType=BIGINT}
