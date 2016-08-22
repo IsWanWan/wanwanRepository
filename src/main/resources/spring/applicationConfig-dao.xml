@@ -31,7 +31,11 @@
         <!-- 数据源 -->
         <property name="dataSource" ref="dataSource"/>
         <!-- mybatis配置文件 -->
-        <property name="mapperLocations" value="classpath:com/my/mapper/*.xml"/>
+        <property name="mapperLocations" >
+            <list>
+                <value>classpath*:com/my/mapper/UserMapper.xml</value>
+            </list>
+        </property>
     </bean>
 
     <!-- 配置扫描器 -->

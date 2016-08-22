@@ -24,55 +24,25 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private AdminService adminService;
-    @Autowired
-    private FrutisService frutisService;
-    @Autowired
-    private UserService userService;
 
-    @RequestMapping("/get")
-    public ModelAndView GetUser() {
 
-        ModelAndView mv = new ModelAndView();
-
-        Person p = new Person("ddd", "sdsd", 22);
-        mv.addObject("p", p);
-        mv.setViewName("/detail");
-
-        return mv;
-
+    @ResponseBody
+    @RequestMapping("/index")
+    public ModelAndView index(){
+        return new ModelAndView("/test");
     }
 
     @ResponseBody
     @RequestMapping("/find")
-    public Map<String, Object> find() throws Exception {
+    public Map<String, Object> find(String username) throws Exception {
 
         Map<String, Object> map = new HashMap<>();
-        Admin admin = adminService.getByUsername("zhaoxiuling");
+        Admin admin = adminService.getByUsername(username);
         map.put("admin", admin);
 
         return map;
     }
 
-
-    @RequestMapping("/test")
-    public ModelAndView test(){
-        ModelAndView mv = new ModelAndView();
-        User user = userService.selectByUsername("haha");
-
-        mv.addObject("user",user);
-        mv.setViewName("/detail");
-        return mv;
-    }
-
-    @RequestMapping("/getOne")
-    public ModelAndView getOne() throws Exception {
-
-        ModelAndView mv = new ModelAndView();
-        Frutis frutis = frutisService.selectByPrimaryKey("a2");
-        mv.addObject("frutis", frutis);
-        mv.setViewName("/detail");
-        return mv;
-    }
 
 
 

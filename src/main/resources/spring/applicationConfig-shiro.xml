@@ -34,9 +34,9 @@
             <value>
                 <!-- 对静态资源设置匿名访问 -->
                 /operator/byUsername = anon
-                /images/** = anon
-                /js/** = anon
-                /styles/** = anon
+                /static/images/** = anon
+                /static/js/** = anon
+                /static/css/** = anon
                 <!-- 验证码，可匿名访问 -->
                 /validatecode.jsp = anon
                 /user/find =anon
