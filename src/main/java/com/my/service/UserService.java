@@ -3,6 +3,8 @@ package com.my.service;
 import com.my.pojo.User;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by wanwan on 16/7/20.
  */
@@ -22,4 +24,6 @@ public interface UserService {
     int updateByPrimaryKey(User record);
 
     User selectByUsername(String username);
+
+    List<User> listPage();
 }

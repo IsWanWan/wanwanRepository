@@ -1,5 +1,6 @@
 package com.my.controller;
 
+import com.my.dao.UserMapper;
 import com.my.pojo.Admin;
 import com.my.pojo.Frutis;
 import com.my.pojo.Person;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,7 +26,8 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private AdminService adminService;
-
+@Autowired
+private UserService userService;
 
     @ResponseBody
     @RequestMapping("/index")
@@ -43,7 +46,16 @@ public class UserController {
         return map;
     }
 
+    @ResponseBody
+    @RequestMapping("/listPage")
+    public ModelAndView listPage() throws Exception {
+      ModelAndView mv = new ModelAndView();
 
+        List<User> userList = userService.listPage();
+        mv.addObject("userlist", userList);
+        mv.setViewName("/user");
 
+        return mv;
+    }
 
 }
