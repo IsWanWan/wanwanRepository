@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by wanwan on 16/7/20.
@@ -53,7 +54,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<User> listPage() {
-        return userMapper.listPage();
+    public List<User> listPage(Map map) {
+        return userMapper.listPage(map);
     }
 }

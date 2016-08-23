@@ -20,7 +20,7 @@
         var _menus = {"menus":[
             {"menuid":"1","icon":"icon-sys","menuname":"系统管理",
                 "menus":[
-                    {"menuid":"12","menuname":"添加用户","icon":"icon-add","url":"table.jsp"},
+                    {"menuid":"12","menuname":"添加用户","icon":"icon-add","url":"/user/listPage"},
                     {"menuid":"13","menuname":"用户管理","icon":"icon-users","url":"table.jsp"},
                     {"menuid":"14","menuname":"角色管理","icon":"icon-role","url":"table.jsp"},
                     {"menuid":"15","menuname":"权限设置","icon":"icon-set","url":"table.jsp"},

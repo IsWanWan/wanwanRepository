@@ -4,6 +4,7 @@ import com.my.pojo.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by wanwan on 16/7/20.
@@ -25,5 +26,5 @@ public interface UserService {
 
     User selectByUsername(String username);
 
-    List<User> listPage();
+    List<User> listPage(Map map);
 }

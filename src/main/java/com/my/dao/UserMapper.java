@@ -3,6 +3,7 @@ package com.my.dao;
 import com.my.pojo.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
@@ -19,5 +20,5 @@ public interface UserMapper {
 
     User selectByUsername(String username);
 
-    List<User> listPage();
+    List<User> listPage(Map map);
 }

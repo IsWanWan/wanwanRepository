@@ -149,7 +149,10 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="listPage" resultMap="BaseResultMap" >
-    select * from user;
+  <select id="listPage" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select * from user WHERE 1=1
+    <if test="username != null">
+      and username =  #{username,jdbcType=VARCHAR}
+    </if>
   </select>
 </mapper>

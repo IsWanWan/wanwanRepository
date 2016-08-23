@@ -25,51 +25,37 @@
             }
             alert(ids);
         }
+
+        function doSearch(){
+            $('#tt').datagrid('reload',{
+
+                username:$('#username').val()
+            })
+        }
     </script>
 </head>
 <BODY>
-<h1>Welcome to jQuery UI!</h1>
-<br>
-<br>
 
-<table id="tt" class="easyui-datagrid" style="width:600px;height:auto"
-       url="data/datagrid_data.json"
-       title="Load Data" iconCls="icon-save">
+<div id="tb" style="padding:3px">
+    <span>用户名:</span>
+    <input id="username" style="line-height: 20px;border: 1px solid#cccccc">
+    <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">Search</a>
+</div>
+
+<table id="tt" class="easyui-datagrid" style="height:auto"
+       url="/user/listPage"
+       title="Load Data" iconCls="icon-save" rownumbers="true" pagination="true">
     <thead>
     <tr>
-        <th field="itemid" width="80">itemid</th>
-        <th field="productid" width="80">listprice</th>
-        <th field="listprice" width="80" align="right">List Price</th>
-        <th field="unitcost" width="80" align="right">Unit Cost</th>
-        <th field="attr1" width="150">Attribute</th>
-        <th field="status" width="60" align="center">Stauts</th>
+        <th field="itemid" >itemid</th>
+        <th field="productid" >listprice</th>
+        <th field="listprice"  align="right">List Price</th>
+        <th field="unitcost"  align="right">Unit Cost</th>
+        <th field="attr1" >Attribute</th>
+        <th field="status" align="center">Stauts</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>1</td>
-        <td>we</td>
-        <td>23.4</td>
-        <td>23</td>
-        <td>fdfsd</td>
-        <td>已支付</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>ds</td>
-        <td>21.4</td>
-        <td>21</td>
-        <td>dfdfsf</td>
-        <td>已支付</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>hhh</td>
-        <td>45.4</td>
-        <td>45</td>
-        <td>rere</td>
-        <td>已支付</td>
-    </tr>
     <c:forEach items="${userlist}" var="user">
         <tr>
             <td>${user.username}</td>

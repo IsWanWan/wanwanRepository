@@ -8,9 +8,11 @@ import com.my.pojo.User;
 import com.my.service.AdminService;
 import com.my.service.FrutisService;
 import com.my.service.UserService;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -48,10 +50,13 @@ private UserService userService;
 
     @ResponseBody
     @RequestMapping("/listPage")
-    public ModelAndView listPage() throws Exception {
+    public ModelAndView listPage(@RequestParam(required = false) String username) throws Exception {
+        Map map = new HashMap();
       ModelAndView mv = new ModelAndView();
-
-        List<User> userList = userService.listPage();
+        if(!StringUtils.isEmpty(username)){
+            map.put("username",username);
+        }
+        List<User> userList = userService.listPage(map);
         mv.addObject("userlist", userList);
         mv.setViewName("/user");
 
