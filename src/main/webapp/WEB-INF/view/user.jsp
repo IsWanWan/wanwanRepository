@@ -61,11 +61,10 @@
             }
             alert(ids);
         }
-
+         //查询
         function doSearch(){
             $('#adminTable').datagrid('load',{
-
-                username:$('#username').val()
+                username:$.trim($('#username').val())
             })
         }
     </script>
@@ -84,7 +83,8 @@
    </div>
        <div style="padding: 2px;">
            用户名:<input type="text" class="textbox" name="username" id="username">
-           日期:<input type="text" class="easyui-datebox" name="dataform" >
+           开始日期:<input type="text" class="easyui-datetimebox" name="dataform" editable="false" size ="30">
+           结束日期:<input type="text" class="easyui-datetimebox" name="dataTo" editable="false" size="30">
            <a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="doSearch()">查询</a>
        </div>
 
