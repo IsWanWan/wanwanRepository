@@ -33,34 +33,30 @@ private UserService userService;
 
     @ResponseBody
     @RequestMapping("/index")
-    public ModelAndView index(){
-        return new ModelAndView("/test");
-    }
+    public ModelAndView find() throws Exception {
 
-    @ResponseBody
-    @RequestMapping("/find")
-    public Map<String, Object> find(String username) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/user");
 
-        Map<String, Object> map = new HashMap<>();
-        Admin admin = adminService.getByUsername(username);
-        map.put("admin", admin);
-
-        return map;
+        return mv;
     }
 
     @ResponseBody
     @RequestMapping("/listPage")
-    public ModelAndView listPage(@RequestParam(required = false) String username) throws Exception {
+    public Map<String,Object> listPage(@RequestParam(required = false) String username, Integer page, Integer rows) throws Exception {
+       System.out.println("pageNumber :" +page +"pageSize "+rows);
+
         Map map = new HashMap();
-      ModelAndView mv = new ModelAndView();
+        Map<String ,Object> model = new HashMap<>();
+
         if(!StringUtils.isEmpty(username)){
             map.put("username",username);
         }
         List<User> userList = userService.listPage(map);
-        mv.addObject("userlist", userList);
-        mv.setViewName("/user");
+        model.put("total",userList.size());
+        model.put("rows", userList);
 
-        return mv;
+        return model;
     }
 
 }

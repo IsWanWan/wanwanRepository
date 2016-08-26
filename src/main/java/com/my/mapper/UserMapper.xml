@@ -154,5 +154,6 @@
     <if test="username != null">
       and username =  #{username,jdbcType=VARCHAR}
     </if>
+
   </select>
 </mapper>

@@ -20,7 +20,7 @@
         var _menus = {"menus":[
             {"menuid":"1","icon":"icon-sys","menuname":"系统管理",
                 "menus":[
-                    {"menuid":"12","menuname":"添加用户","icon":"icon-add","url":"/user/listPage"},
+                    {"menuid":"12","menuname":"添加用户","icon":"icon-add","url":"/user/index"},
                     {"menuid":"13","menuname":"用户管理","icon":"icon-users","url":"table.jsp"},
                     {"menuid":"14","menuname":"角色管理","icon":"icon-role","url":"table.jsp"},
                     {"menuid":"15","menuname":"权限设置","icon":"icon-set","url":"table.jsp"},
@@ -148,16 +148,15 @@
 
 </div>
 <div id="mainPanle" region="center" style="background: #eee; overflow-y:hidden">
-    <div id="tabs" class="easyui-tabs"  fit="true" border="false" >
+    <div id="tabs" class="easyui-tabs"  fit="true" border="false"  >
         <div title="欢迎使用" style="padding:20px;overflow:hidden; color:red; " >
             <%--<h1 style="font-size:24px;">* 作者：绾绾 QQ：1055818239</h1>--%>
             <%--<h1 style="font-size:24px;">* BLOG: <a style="font-size:24px;color:green;" href="http://hxling.cnblogs.com">疯狂秀才的博客</a></h1>--%>
             <%--<h1 style="font-size:24px;">* 讨论群：112044258、32994605、36534121、56271061</h1>--%>
             <%--<h1 style="font-size:24px;">* 广告：本人承接各类大中小型管理系统的软件的设计与开发，有需要的朋友联系我啦~~~~</h1>--%>
 
-                <table id="tt" class="easyui-datagrid" style="width:600px;height:auto"
-                       url="data/datagrid_data.json"
-                       title="Load Data" iconCls="icon-save">
+                <table id="tt" class="easyui-datagrid" style="width:800px;height:auto"
+                       title="Load Data" iconCls="icon-save" toolbar="#tb" >
                     <thead>
                     <tr>
                         <th field="itemid" width="80">itemid</th>
@@ -195,8 +194,16 @@
                     </tr>
                     </tbody>
                 </table>
+                <div id="tb" style="padding:5px;height:auto">
+                    <div style="margin-bottom:5px">
+                        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"></a>
+                        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a>
+                        <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a>
+                        <a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>
+                        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
+                    </div>
 
-            <input type="button" onclick="check()" value="按钮">
+                </div>
 
         </div>
     </div>
